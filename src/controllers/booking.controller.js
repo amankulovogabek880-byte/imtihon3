@@ -12,7 +12,7 @@ class BookingController {
       if (!serviceResult.rowCount) return res.redirect("/bookings/create?error=Service not found");
 
       const selectedDate = new Date(date);
-      if (Number.isNaN(selectedDate.getTime()) || selectedDate <= new Date()) {
+      if (Number.isNaN(selectedDate.getTime()) || selectedDate <= new Date()) {///sana expirelikni tekwiradi
         return res.redirect("/bookings/create?error=Choose correct future date");
       }
 

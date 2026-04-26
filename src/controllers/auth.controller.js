@@ -62,22 +62,6 @@ class AuthController {
     }
   };
 
-  refresh = async (req, res, next) => {
-    try {
-      const token = req.cookies.refreshToken || req.body.refreshToken;
-      if (!token) return res.status(401).json({ success: false, message: "Refresh token required" });
-
-      const payload = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET_KEY);
-      const result = await pool.query("SELECT id, name, email, role FROM users WHERE id = $1", [payload.id]);
-      if (!result.rowCount) return res.status(401).json({ success: false, message: "User not found" });
-
-      const accessToken = generateAccessToken(result.rows[0]);
-      res.cookie("accessToken", accessToken, { httpOnly: true });
-      res.json({ success: true, accessToken });
-    } catch (error) {
-      next(error);
-    }
-  };
 
   forgotPassword = async (req, res, next) => {
     try {

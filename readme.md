@@ -24,8 +24,8 @@ npm run restart
 Default admin:
 
 ```txt
-email: admin@example.com
-password: Admin123!
+email: 
+password: 
 ```
 
 Main pages:

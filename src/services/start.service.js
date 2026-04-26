@@ -1,6 +1,3 @@
-import bcrypt from "bcrypt";
-import pool from "../db/db.config.js";
-
 export const startData = async () => {
   const services = ["Oil change", "Repair", "Car wash", "Brake check", "Engine diagnostics"];
 
