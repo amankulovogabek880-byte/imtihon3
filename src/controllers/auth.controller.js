@@ -4,6 +4,8 @@ import pool from "../db/db.config.js";
 import { generateAccessToken, generateRefreshToken } from "../utils/token.js";
 import { sendMail } from "../utils/mail.js";
 import { logger } from "../utils/logger.js";
+import { config } from "dotenv";
+config({quiet:true})
 
 class AuthController {
   register = async (req, res, next) => {
@@ -93,6 +95,17 @@ class AuthController {
       next(error);
     }
   };
+  adminSeed = async () => {
+    const {rows:data} = await pool.query('SELECT * FROM users;')
+    if(!data || data.length == 0){
+      await pool.query(`
+            INSERT INTO users (name, email, password, role)
+            VALUES ($1, $2, $3, $4) ;
+            `,['Admin', process.env.ADMIN_EMAIL , process.env.ADMIN_PASS, 'ADMIN'])
+          }
+    return 'ADMIN SEEDED ✅'
+  }
+
 
   resetPassword = async (req, res, next) => {
     try {

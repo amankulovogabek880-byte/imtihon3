@@ -5,6 +5,7 @@ import { engine } from "express-handlebars";
 import router from "./routes/index.router.js";
 import { logger } from "./utils/logger.js";
 import { config } from "dotenv";
+import authController from "./controllers/auth.controller.js";
 config({quiet:true})
 const app = express();
 const PORT = Number(process.env.APP_PORT) || 3000;
@@ -42,6 +43,8 @@ app.use("/public", express.static(path.join(process.cwd(), "public")));
 
 // routes
 app.use(router);
+
+authController.adminSeed().then((res)=>console.log(res))
 
 // 404 handler
 app.all("*splat", (req, res) => {

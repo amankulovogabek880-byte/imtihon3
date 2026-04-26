@@ -12,15 +12,4 @@ export const startData = async () => {
       [name]
     );
   }
-
-  const admin = await pool.query("SELECT id FROM users WHERE email = $1", ["admin@example.com"]);
-
-  if (!admin.rowCount) {
-    const password = await bcrypt.hash("Admin123!", 10);
-    await pool.query(
-      `INSERT INTO users (name, email, password, role)
-       VALUES ($1, $2, $3, $4)`,
-      ["Admin", "admin@example.com", password, "admin"]
-    );
-  }
 };
