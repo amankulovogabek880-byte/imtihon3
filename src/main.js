@@ -4,8 +4,8 @@ import cookieParser from "cookie-parser";
 import { engine } from "express-handlebars";
 import router from "./routes/index.router.js";
 import { logger } from "./utils/logger.js";
-import "dotenv/config";
-
+import { config } from "dotenv";
+config({quiet:true})
 const app = express();
 const PORT = Number(process.env.APP_PORT) || 3000;
 

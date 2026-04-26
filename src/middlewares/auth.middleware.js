@@ -6,7 +6,7 @@ export const authMiddleware = async (req, res, next) => {
     const token = req.cookies.accessToken 
 
     if (!token) {
-      if (req.headers.accept?.includes("text/html")) return res.redirect("/login");
+      if (req.headers.accept) return res.redirect("/login");
       return res.status(401).json({ success: false, message: "Unauthorized" });
     }
 

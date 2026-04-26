@@ -1,11 +1,12 @@
 import nodemailer from "nodemailer";
 import { logger } from "./logger.js";
+import { config } from "dotenv";
+config({quiet:true})
 
 const createTransporter = () => {
   const user = process.env.GOOGLE_ACCOUNT_USER;
   const pass = process.env.GOOGLE_APP_PASSWORD;
 
-  if (!user || !pass || pass === "your_google_app_password") return null;
 
   return nodemailer.createTransport({
     service: "gmail",

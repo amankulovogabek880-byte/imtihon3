@@ -12,18 +12,13 @@ Create PostgreSQL database:
 CREATE DATABASE car_service_db;
 ```
 
-Create `.env` from `.env.example` and write your PostgreSQL password:
 
-```env
-DB_NAME=car_service_db
-DB_USER=postgres
-DB_PASSWORD=your_postgres_password
-```
 
 Run:
 
 ```bash
 npm run dev
+npm run restart
 ```
 
 Default admin:
