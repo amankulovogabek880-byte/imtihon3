@@ -1,0 +1,30 @@
+<section class="hero">
+  <div>
+    <p class="eyebrow">Welcome back</p>
+    <h1>{{user.name}}, book your car service easily</h1>
+    <p>Choose service, select date, and get email confirmation.</p>
+    <a class="btn" href="/bookings/create">Create booking</a>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Recent bookings</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Date</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        {{#each bookings}}
+          <tr>
+            <td>{{this.service_name}}</td>
+            <td>{{formatDate this.date}}</td>
+            <td><span class="status">{{this.status}}</span></td>
+          </tr>
+        {{else}}
+          <tr><td colspan="3">No bookings yet</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>

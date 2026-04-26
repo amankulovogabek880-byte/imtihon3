@@ -1,0 +1,26 @@
+<section class="panel">
+  <div class="panel-head">
+    <h1>My bookings</h1>
+    <a class="btn" href="/bookings/create">New booking</a>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Date</th><th>Status</th><th>Device</th></tr>
+      </thead>
+      <tbody>
+        {{#each bookings}}
+          <tr>
+            <td>{{this.service_name}}</td>
+            <td>{{formatDate this.date}}</td>
+            <td><span class="status">{{this.status}}</span></td>
+            <td>{{this.browser}} / {{this.os}}</td>
+          </tr>
+        {{else}}
+          <tr><td colspan="4">No bookings found</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>

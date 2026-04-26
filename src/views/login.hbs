@@ -1,0 +1,29 @@
+<section class="auth-page">
+  <div class="auth-info">
+    <div class="logo-badge">🚗</div>
+    <p class="eyebrow">Car service booking</p>
+    <h1>Welcome back</h1>
+    <p>Login to book oil change, repair, brake check, diagnostics and manage your appointments.</p>
+  </div>
+
+  <div class="auth-card">
+    <h2>Login</h2>
+    {{#if error}}<p class="alert">{{error}}</p>{{/if}}
+    {{#if message}}<p class="success">{{message}}</p>{{/if}}
+
+    <form action="/auth/login" method="post">
+      <label>Email</label>
+      <input type="email" name="email" placeholder="you@example.com" required>
+
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Enter password" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="auth-links">
+      <p>Don't have account? <a href="/register">Register</a></p>
+      <p><a href="/forgot-password">Forgot password?</a></p>
+    </div>
+  </div>
+</section>

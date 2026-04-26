@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Service Booking</title>
+  <link rel="stylesheet" href="/public/css/main.css">
+</head>
+<body>
+  {{#if user}}
+    <nav class="navbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">CS</span>
+        <span>CarService</span>
+      </a>
+
+      <div class="navlinks">
+        <a href="/bookings/create">Book</a>
+        <a href="/bookings">My bookings</a>
+
+        {{#if (eq user.role "admin")}}
+          <a href="/admin">Admin</a>
+        {{/if}}
+
+        <form action="/auth/logout" method="post">
+          <button class="logout-btn" type="submit">Logout</button>
+        </form>
+      </div>
+    </nav>
+  {{/if}}
+
+  <main class="container {{#unless user}}auth-container{{/unless}}">
+    {{{body}}}
+  </main>
+</body>
+</html>

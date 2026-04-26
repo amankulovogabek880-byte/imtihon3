@@ -1,0 +1,19 @@
+<section class="auth-card wide">
+  <h1>Create booking</h1>
+  {{#if error}}<p class="alert">{{error}}</p>{{/if}}
+
+  <form action="/bookings" method="post">
+    <label>Service</label>
+    <select name="service_id" required>
+      <option value="">Choose service</option>
+      {{#each services}}
+        <option value="{{this.id}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+
+    <label>Date and time</label>
+    <input type="datetime-local" name="date" required>
+
+    <button type="submit">Book now</button>
+  </form>
+</section>

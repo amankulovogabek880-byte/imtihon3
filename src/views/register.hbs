@@ -1,0 +1,30 @@
+<section class="auth-page">
+  <div class="auth-info">
+    <div class="logo-badge">🛠️</div>
+    <p class="eyebrow">Create account</p>
+    <h1>Start booking your car service faster</h1>
+    <p>Create an account and keep all your service appointments in one clean dashboard.</p>
+  </div>
+
+  <div class="auth-card">
+    <h2>Register</h2>
+    {{#if error}}<p class="alert">{{error}}</p>{{/if}}
+
+    <form action="/auth/register" method="post">
+      <label>Name</label>
+      <input type="text" name="name" placeholder="Your name" required>
+
+      <label>Email</label>
+      <input type="email" name="email" placeholder="you@example.com" required>
+
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Create password" required>
+
+      <button type="submit">Create account</button>
+    </form>
+
+    <div class="auth-links">
+      <p>Already have account? <a href="/login">Login</a></p>
+    </div>
+  </div>
+</section>

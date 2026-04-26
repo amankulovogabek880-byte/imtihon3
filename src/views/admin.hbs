@@ -1,0 +1,46 @@
+<section class="panel">
+  <div class="panel-head">
+    <h1>Admin dashboard</h1>
+    <form class="filter" method="get" action="/admin">
+      <select name="status">
+        <option value="">All</option>
+        <option value="pending">Pending</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="done">Done</option>
+      </select>
+      <button type="submit">Filter</button>
+    </form>
+  </div>
+  {{#if error}}<p class="alert">{{error}}</p>{{/if}}
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>User</th><th>Email</th><th>Service</th><th>Date</th><th>Status</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        {{#each bookings}}
+          <tr>
+            <td>{{this.user_name}}</td>
+            <td>{{this.user_email}}</td>
+            <td>{{this.service_name}}</td>
+            <td>{{formatDate this.date}}</td>
+            <td><span class="status">{{this.status}}</span></td>
+            <td>
+              <form class="inline" action="/bookings/{{this.id}}/status" method="post">
+                <select name="status">
+                  <option value="pending">pending</option>
+                  <option value="confirmed">confirmed</option>
+                  <option value="done">done</option>
+                </select>
+                <button>Update</button>
+              </form>
+            </td>
+          </tr>
+        {{else}}
+          <tr><td colspan="6">No bookings</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
