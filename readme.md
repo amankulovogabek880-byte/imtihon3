@@ -1,4 +1,4 @@
-# Car Service Booking - PostgreSQL version
+# Car Service Booking 
 
 ## Setup
 
